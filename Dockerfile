@@ -1,8 +1,9 @@
 FROM node:latest
 RUN mkdir -p /code
 WORKDIR /code
-COPY package*.json /code/
-RUN npm install
+COPY package.json /code/
+COPY yarn.lock /code/
+RUN yarn
 COPY . /code
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
