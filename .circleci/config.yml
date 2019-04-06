@@ -21,9 +21,10 @@ jobs:
             - ./node_modules
       - run:
           name: "Run Jest and Collect Coverage Reports"
-          command: yarn start & yarn db:migrate && yarn db:seed && yarn test --collectCoverage=true
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
+          command: yarn start & yarn db:migrate && yarn db:seed && yarn test:ci
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
       - store_test_results:
-          path: coverage/clover.xml
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
