@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/phrassed
+    docker:
+      - image: circleci/node:lts
+      - image: postgres:9.6.2-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: terms
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-yarn
+          command: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: "Run Jest and Collect Coverage Reports"
+          command: yarn start & yarn db:migrate && yarn db:seed && yarn test --collectCoverage=true
+      - store_artifacts:
+          path: coverage
