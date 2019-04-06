@@ -20,6 +20,9 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: "Linting"
+          command: yarn lint:ci
+      - run:
           name: "Run Jest and Collect Coverage Reports"
           command: yarn start & yarn db:migrate && yarn db:seed && yarn test:ci
           environment:
