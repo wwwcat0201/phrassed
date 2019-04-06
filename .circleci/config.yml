@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/phrassed
     docker:
       - image: circleci/node:lts
-      - image: postgres:9.6.2-alpine
+      - image: postgres:11-alpine
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: terms
@@ -22,5 +22,8 @@ jobs:
       - run:
           name: "Run Jest and Collect Coverage Reports"
           command: yarn start & yarn db:migrate && yarn db:seed && yarn test --collectCoverage=true
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
       - store_test_results:
-          path: test-results
+          path: coverage/clover.xml
