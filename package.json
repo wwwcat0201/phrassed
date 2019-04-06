@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./server",
     "dev": "nodemon ./server --ext js,ejs",
-    "test": "node ./__tests__/app.test.js",
+    "test": "jest ./__tests__/app.test.js",
     "lint": "eslint server/ --fix",
     "prettier": "prettier server/** --write",
     "db:migrate": "knex migrate:latest --env development",
@@ -24,7 +24,7 @@
     "debug": "^4.1.1",
     "eslint": "^5.15.3",
     "eslint-config-prettier": "^4.1.0",
-    "jest": "^24.5.0",
+    "jest": "^24.7.1",
     "nodemon": "^1.18.10",
     "prettier": "^1.16.4",
     "supertest": "^4.0.2"

@@ -1,10 +1,15 @@
-const supertest = require('supertest')
+const supertest = require("supertest")
 
-request = supertest('http://localhost:3000')
+const request = supertest("http://localhost:3000")
 
-request
-  .get('/')
-  .expect(200, function(err) {
-    console.log(err)
+describe("Test ...", () => {
+  it("should respond with 200 ok", () => {
+    return request.get("/").expect(200)
   })
-  .expect('Content-Type', 'text/html; charset=utf-8')
+  it("should have title containing name of app", () => {
+    return request.get("/").then(response => {
+      document.documentElement.innerHTML = response.text
+      expect(document.title).toContain("Phrassed")
+    })
+  })
+})
