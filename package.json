@@ -11,7 +11,8 @@
     "lint:ci": "eslint server/ --format junit -o reports/junit/js-lint-results.xml",
     "prettier": "prettier server/** --write",
     "db:migrate": "knex migrate:latest --env development",
-    "db:seed": "knex seed:run --env development"
+    "db:seed": "knex seed:run --env development",
+    "circleci": "circleci local execute --job build"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
