@@ -1,2 +1,1 @@
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/vnglst/phrassed.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/vnglst/phrassed.svg?style=svg)](https://circleci.com/gh/vnglst/phrassed)
