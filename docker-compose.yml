@@ -1,27 +1,5 @@
 version: "3"
 services:
-  #   app:
-  #     container_name: app
-  #     restart: always
-  #     build: .
-  #     ports:
-  #       - "3000:3000"
-  #     depends_on:
-  #       - postgres
-  #     environment:
-  #       - DB_HOST=postgres
-  #       - DB_USER=postgres
-  #       - DB_PASSWORD=secret
-  #       - DB_NAME=terms
-  #     networks:
-  #       - postgres
-  #     volumes:
-  #       - .:/code
-  #     command: >
-  #       sh -c "yarn db:migrate &&
-  #              yarn db:seed &&
-  #              yarn dev"
-
   postgres:
     container_name: postgres_container
     image: postgres
