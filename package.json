@@ -5,11 +5,16 @@
   "scripts": {
     "start": "node ./server",
     "dev": "nodemon ./server --ext js,ejs",
-    "test": "jest ./__tests__/app.test.js",
+    "verify": "yarn lint; yarn test",
+    "test": "yarn test:integration; yarn test:unit",
+    "test:integration": "./scripts/run-integration-tests.sh",
+    "test:unit": "jest ./server",
     "lint": "eslint server/ --fix",
+    "lint:ci": "eslint integration/ server/ --format junit -o reports/junit/js-lint-results.xml",
     "prettier": "prettier server/** --write",
     "db:migrate": "knex migrate:latest --env development",
-    "db:seed": "knex seed:run --env development"
+    "db:seed": "knex seed:run --env development",
+    "circleci": "circleci local execute --job build"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
@@ -18,6 +23,7 @@
     "http-errors": "^1.7.2",
     "knex": "^0.16.3",
     "morgan": "^1.9.1",
+    "nyc": "^13.3.0",
     "pg": "^7.9.0"
   },
   "devDependencies": {
@@ -25,6 +31,7 @@
     "eslint": "^5.15.3",
     "eslint-config-prettier": "^4.1.0",
     "jest": "^24.7.1",
+    "jest-junit": "^6.3.0",
     "nodemon": "^1.18.10",
     "prettier": "^1.16.4",
     "supertest": "^4.0.2"
