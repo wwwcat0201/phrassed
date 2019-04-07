@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./server",
     "dev": "nodemon ./server --ext js,ejs",
+    "verify": "yarn lint; yarn test",
     "test": "yarn test:integration; yarn test:unit",
     "test:integration": "./scripts/run-integration-tests.sh",
     "test:unit": "jest ./server",
