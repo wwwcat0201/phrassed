@@ -23,14 +23,14 @@ jobs:
           name: "Linting"
           command: yarn lint:ci
       - run:
-          name: "Run Unit Tests and Collect Coverage Reports"
-          command: yarn test:unit:coverage --ci
+          name: "Run Unit Tests"
+          command: yarn test:unit --ci
+      - run:
+          name: "Run Integration Tests"
+          command: yarn test:integration
           environment:
             JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
       - store_test_results:
           path: reports/junit
       - store_artifacts:
           path: reports/junit
-      - run:
-          name: "Run e2e tests"
-          command: yarn test:integration

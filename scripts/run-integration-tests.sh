@@ -13,4 +13,4 @@ echo "---> Loading database seed data"
 yarn knex seed:run --env development
 
 echo "---> Running tests"
-yarn jest ./integration/*.test.js
+yarn jest ./integration/*.test.js --reporters=default --reporters=jest-junit
