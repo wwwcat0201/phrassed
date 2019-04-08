@@ -31,10 +31,11 @@ class App extends Component {
 
   async fetchTerms(query) {
     // fake query
+    console.log("fake query", query)
     await new Promise(resolve => setTimeout(resolve, 1000))
     return [
       {
-        de: "Anlage" + query,
+        de: "Anlage",
         nl: "installatie",
         en: "installation",
         sourceId: "1234"
