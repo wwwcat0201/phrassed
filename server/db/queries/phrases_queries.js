@@ -1,20 +1,12 @@
-const knex = require('../connection');
+const knex = require("../connection")
+const { languages } = require("../../helpers")
 
-const langPhraseMapper = {
-  german: 'de',
-  dutch: 'nl',
-  english: 'en'
-}
-
-function searchInPhrases ({ query, lang }) {
-  const column = langPhraseMapper[lang]
-  return knex('phrases')
-    .select('*')
+module.exports.searchInPhrases = ({ query, l1, l2 }) => {
+  const column1 = languages[l1]
+  const column2 = languages[l2]
+  return knex("phrases")
+    .select(column1, column2)
     .whereRaw(
-      `to_tsvector('${lang}', ${column}) @@ to_tsquery('${lang}', '${query}')`
+      `to_tsvector('${l1}', ${column1}) @@ plainto_tsquery('${l1}', '${query}')`
     )
-}
-
-module.exports = {
-  searchInPhrases
 }

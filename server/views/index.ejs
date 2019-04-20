@@ -1,12 +1,16 @@
-<%- include('layout/header'); -%>
-    <%- include('partials/terms-partial'); -%>
-    <ul>
-      <% for(const phrase of phrases) { %>
-      <li>
-        <div>German: <%= phrase.de %></div>
-        <div>Dutch: <%= phrase.nl %></div>
-        <div>English: <%= phrase.en %></div>
-      </li>
-      <% } %>
-    </ul>
-<%- include('layout/footer'); -%>
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head'); -%>
+  <body>
+    <%- include('partials/searchbox'); -%>
+    <h2><%= query %></h2> 
+    <%- include('partials/terms'); -%>
+
+    <% for(const phrase of phrases) { %>
+    <div class="row">
+      <div class="column"><%- phrase.de %></div>
+      <div class="column"><%- phrase.nl %></div>
+    </div>
+    <% } %>
+  </body>
+</html>
