@@ -1,15 +1,13 @@
 exports.up = function(knex) {
   return knex.schema.createTable("phrases", table => {
     table.increments()
-    table.string("source").notNullable()
     table
-      .string("sourceId")
+      .string("phraseid")
       .notNullable()
       .unique()
     table.string("de")
     table.string("nl")
     table.string("en")
-    table.string("domain")
     // TODO: for indices, later
     // table.specificType('en', 'tsvector').notNullable()
     // table.index('en', null, 'gin')
