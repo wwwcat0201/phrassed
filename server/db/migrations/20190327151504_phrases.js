@@ -1,16 +1,19 @@
 exports.up = function(knex) {
-  return knex.schema.createTable("phrases", table => {
-    table.increments()
-    table
-      .string("phraseid")
+  return knex.schema.createTable("phrases", t => {
+    t.increments()
+    t.string("phraseid")
       .notNullable()
       .unique()
-    table.string("de")
-    table.string("nl")
-    table.string("en")
-    // TODO: for indices, later
-    // table.specificType('en', 'tsvector').notNullable()
-    // table.index('en', null, 'gin')
+    t.text("de")
+    t.text("fr")
+    t.text("es")
+    t.text("pt")
+    t.text("fi")
+    t.text("it")
+    t.text("sv")
+    t.text("el")
+    t.text("nl")
+    t.text("en")
   })
 }
 
